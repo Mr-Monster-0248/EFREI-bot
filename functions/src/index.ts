@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions';
-import { getMajeures, MajorCard } from './majeures'
+import { getMajeures, MajorCard } from './scrap/majeures'
 
 // Google Assistant dependancies
 import { dialogflow, SimpleResponse, BrowseCarousel, BrowseCarouselItem, Image } from 'actions-on-google';
@@ -16,13 +16,13 @@ app.intent('Majeur', async (conv) => {
     conv.ask('En voici une liste :');
     conv.ask(new BrowseCarousel({
         items: data.map((el): any => {
-            new BrowseCarouselItem({
+            return new BrowseCarouselItem({
                 title: el.title,
                 url: el.link,
                 description: el.descript,
                 image: new Image({
                     url: el.img,
-                    alt: 'background image not important'
+                    alt: 'background image not important',
                 })
             })
         })

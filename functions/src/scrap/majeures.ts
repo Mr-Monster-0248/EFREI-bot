@@ -18,6 +18,12 @@ export async function getMajeures() {
                 const $ = cheerio.load(html);
 
                 $(".element-anime").each((i, elem) => {
+                    tab[i] = {
+                        img: '',
+                        descript: '',
+                        title: '',
+                        link: ''
+                    }
                     tab[i].title = $(elem)
                         .find("h3")
                         .text()
