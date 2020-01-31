@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export interface EventCard {
-	title: string,
-	date: string,
-	beginTime: string,
-	endTime: string
+	readonly title: string,
+	readonly date: string,
+	readonly beginTime: string,
+	readonly endTime: string
 }
 
 export async function getEvent(type: string = "") {
@@ -30,11 +30,12 @@ export async function getEvent(type: string = "") {
 
 			let repTab: EventCard[] = [];
 			response.data.rows.forEach((elem: any, i: number) => {
-				repTab[i] = elem.cardInfo;
-				repTab[i].title = elem.eventName;
-				repTab[i].date = elem.eventbeginDate;
-				repTab[i].beginTime = elem.eventBeginTime;
-				repTab[i].endTime = elem.eventEndTime;
+				repTab[i] = {
+					title: elem.eventName,
+					date: elem.eventbeginDate,
+					beginTime: elem.eventBeginTime,
+					endTime: elem.eventEndTime
+				};
 			});
 
 			resolve(repTab);
