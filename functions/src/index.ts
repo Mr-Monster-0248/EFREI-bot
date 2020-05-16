@@ -130,7 +130,7 @@ app.intent("Evenements", async (conv) => {
       }),
       buttons: new Button({
         title: "En savoir plus",
-        url: "https://www.efrei.fr/nous-rencontrer/portes-ouvertes/",
+        url: "https://www.efrei.fr/",
       }),
     }),
   );
